@@ -13,11 +13,6 @@ pipeline {
                 echo 'CICD Process'
             }
         }
-	stage ('Execute Selenium Script from Git Repo ') {
-            steps {
-               bat label: '', script: 'Execute.bat'
-            }
-        }
 	stage ('Execution Selenium Script from Local Machine') {
 	    steps 
 	    {
