@@ -11,6 +11,7 @@ pipeline {
         stage ('Initital Setup') {
             steps {
                 echo 'CICD Process'
+		bat label: '', script: 'Execute.bat'
             }
         }
 	stage ('Execution Selenium Script from Local Machine') {
