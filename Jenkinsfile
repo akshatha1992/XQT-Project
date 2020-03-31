@@ -5,32 +5,24 @@ pipeline {
     stages {
         stage ('Clone') {
             steps {
-                git url: 'https://github.com/akshatha1992/Sample-Test-Repository.git'
+                git url: 'https://github.com/akshatha1992/XQT-Project.git'
             }
         }
         stage ('Initital Setup') {
             steps {
-                input('In pipeline, We take decision. Can we proceed?')
+                echo 'CICD Process'
             }
         }
-        stage ('Get Java Home Path') {
-            steps {
-                echo "PATH = ${PATH}"
-                echo "Java_HOME = ${JAVA_HOME}"
-            }
-        }
-	 
 	stage ('Execute Selenium Script from Git Repo ') {
             steps {
-                bat label: '', script: 'executeTest.bat'
+               bat label: '', script: 'Execute.bat'
             }
         }
-	
 	stage ('Execution Selenium Script from Local Machine') {
 	    steps 
 	    {
-	   bat label: '', script: '''cd C:\\Jenkins\\SampleDemo
-	  "C:\\Program Files (x86)\\ojdkbuild\\java-1.8.0-openjdk-1.8.0.222-2\\jre\\bin\\java" -jar "PipelineSeleniumDemo.jar"'''
+	   bat label: '', script: '''cd "C:\\CICD_Jenkins"
+	   "C:\\Program Files (x86)\\ojdkbuild\\java-1.8.0-openjdk-1.8.0.222-2\\jre\\bin\\java" -jar SeleniumWebPage.jar'''
 	    }
         }
         stage ('Report') {
