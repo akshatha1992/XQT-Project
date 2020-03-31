@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage ('Clone') {
             steps {
-                git url: 'https://github.com/akshatha1992/Sample-Test-Repository.git'
+                git url: 'https://github.com/akshatha1992/XQT-Project.git'
             }
         }
         stage ('Initital Setup') {
