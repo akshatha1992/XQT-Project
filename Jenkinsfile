@@ -12,6 +12,11 @@ pipeline {
                 input('In pipeline, We take decision. Can we proceed?')
             }
         }
+        stage ('Docker Build') {
+            steps {
+                echo "Report Details"
+            }
+        }
         stage ('Execution') {
             steps {
                 echo "PATH = ${PATH}"
