@@ -1,7 +1,5 @@
 pipeline {
-
     agent any
-
     stages {
         stage ('Clone') {
             steps {
@@ -15,18 +13,16 @@ pipeline {
             }
         }
 	stage ('Execution Selenium Script from Local Machine') {
-	    steps 
-	    {
-	   bat label: '', script: '''cd "C:\\CICD_Jenkins"
-	   "C:\\Program Files (x86)\\ojdkbuild\\java-1.8.0-openjdk-1.8.0.222-2\\jre\\bin\\java" -jar SeleniumWebPage.jar'''
+	    steps {
+	       bat label: '', script: '''cd "C:\\CICD_Jenkins"
+	        "C:\\Program Files (x86)\\ojdkbuild\\java-1.8.0-openjdk-1.8.0.222-2\\jre\\bin\\java" -jar SeleniumWebPage.jar'''
 	    }
         }
-        stage ('Report') {
+        stage ('Report') 
+	    {
             steps {
-                echo "Report Details"
-            }
-        }
-
-        
-    }
-}
+                 echo "Report Details"
+                }
+           }
+       }
+   }
