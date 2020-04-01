@@ -1,1 +1,16 @@
-readFile 'C:\\CICD_Jenkins\\Sample.html'
+pipeline {
+    agent any
+    stages {
+        stage ('Clone') {
+            steps {
+                checkout scm
+            }
+        }
+        stage ('Initital Setup') {
+            steps {
+               readFile 'C:\\CICD_Jenkins\\Sample.html'
+            }
+        }
+        
+       }
+   }
