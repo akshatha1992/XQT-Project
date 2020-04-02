@@ -3,26 +3,31 @@ pipeline {
     stages {
         stage ('Init') {
             steps {
-                echo "Init result: ${currentBuild.result}"
-                echo "Init currentResult: ${currentBuild.currentResult}"
+                echo "PATH = ${PATH}"
+                echo "Java_HOME = ${JAVA_HOME}"
             }
             post {
                 always {
                     echo "Post-Init result: ${currentBuild.result}"
                     echo "Post-Init currentResult: ${currentBuild.currentResult}"
                 }
+                failure {
+                     input('Build is failed Can we proceed?')
+                }
             }
         }
         stage ('Build') {
             steps {
-                echo "During Build result: ${currentBuild.result}"
-                echo "During Build currentResult: ${currentBuild.currentResult}"
-                sh 'exit 1'
+               bat label: '', script: 'executeTest.bat'
+                echo "Post-Init result: ${currentBuild.result}"
             }
             post {
                 always {
                     echo "Post-Build result: ${currentBuild.result}"
                     echo "Post-Build currentResult: ${currentBuild.currentResult}"
+                }
+                 failure {
+                     input('Build is failed Can we proceed?')
                 }
             }
         }
@@ -31,6 +36,6 @@ pipeline {
         always {
             echo "Pipeline result: ${currentBuild.result}"
             echo "Pipeline currentResult: ${currentBuild.currentResult}"
-        }
+        } 
     }
 }
