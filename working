@@ -28,6 +28,7 @@ pipeline {
 	}
 	post{
                 success {
+		 echo "build success"
                 }
                 failure {
                     script{
@@ -37,6 +38,7 @@ pipeline {
                     }
                 }
                 aborted {
+		 echo "build aborted"
                 }
                 unstable {
                     script{
