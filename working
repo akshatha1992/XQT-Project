@@ -22,7 +22,7 @@ pipeline {
         }
         stage ('Report') {
             steps {
-                echo "Report Details"
+               echo "PATH = ${PATH}"
             }
         }
 	}
@@ -33,17 +33,18 @@ pipeline {
                 failure {
                     script{
                         
-						input('Build is failure. Can we proceed?')
-                        error 'failed to execute'
+		       input('Build is failure. Can we proceed?')
+                      
                     }
                 }
                 aborted {
 		 echo "build aborted"
+		 input('Build is unstable Can we proceed?')
                 }
                 unstable {
                     script{
                            input('Build is unstable Can we proceed?')
-                          error 'unstable to execute'                 
+                                        
                      }
                 }
             }
