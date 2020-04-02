@@ -36,4 +36,9 @@ pipeline {
             echo "Pipeline currentResult: ${currentBuild.currentResult}"
         } 
     }
+    post { 
+        always { 
+          junit 'XQTtest-results.xml'   
+        }
+    }
 }
