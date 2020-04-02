@@ -8,7 +8,6 @@ pipeline {
             }
             post {
                 always {
-                    echo "Post-Init result: ${currentBuild.result}"
                     echo "Post-Init currentResult: ${currentBuild.currentResult}"
                 }
                 failure {
@@ -23,7 +22,6 @@ pipeline {
             }
             post {
                 always {
-                    echo "Post-Build result: ${currentBuild.result}"
                     echo "Post-Build currentResult: ${currentBuild.currentResult}"
                 }
                  failure {
