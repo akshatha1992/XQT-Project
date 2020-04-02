@@ -33,7 +33,7 @@ pipeline {
 		 echo "build success Message"
                 }
                 failure {
-                     echo 'This will run only if failed'
+                     input('Build is failed Can we proceed?')
                 }
                 aborted {
 		 echo "build aborted"
