@@ -3,11 +3,13 @@ pipeline {
     agent any
 
     stages {
-        stage ('Initital Setup') {
-            steps {
-                input('In pipeline, We take decision. Can we proceed?')
-            }
-        }
+	stage("Stage 1") {
+	    steps {
+		script {
+		    error "This pipeline stops here!"
+		}
+	    }
+	}
         stage ('Get Java Home Path') {
             steps {
                 echo "PATH = ${PATH}"
