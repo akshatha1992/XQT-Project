@@ -20,7 +20,7 @@ pipeline {
                 bat label: '', script: 'executeTest.bat'
             }
         }
-        stage ('Report') {
+        stage ('test stage after failure') {
             steps {
                echo "PATH = ${PATH}"
             }
@@ -28,7 +28,7 @@ pipeline {
 	}
 	post{
                 success {
-		 echo "build success"
+		 echo "build success Message"
                 }
                 failure {
                     script{
