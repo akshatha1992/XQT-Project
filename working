@@ -25,6 +25,7 @@ pipeline {
                 echo "Report Details"
             }
         }
+	}
 	post{
                 success {
                 }
@@ -45,5 +46,5 @@ pipeline {
                 }
             }
         
-    }
+    
 }
