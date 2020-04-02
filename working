@@ -1,16 +1,49 @@
 pipeline {
+
     agent any
+
     stages {
-        stage ('Clone') {
-            steps {
-                checkout scm
-            }
-        }
         stage ('Initital Setup') {
             steps {
-               readFile 'C:\\CICD_Jenkins\\Sample.html'
+                input('In pipeline, We take decision. Can we proceed?')
             }
         }
+        stage ('Get Java Home Path') {
+            steps {
+                echo "PATH = ${PATH}"
+                echo "Java_HOME = ${JAVA_HOME}"
+            }
+        }
+	 
+	stage ('Execute Selenium Script from Git Repo ') {
+            steps {
+                bat label: '', script: 'executeTest.bat'
+            }
+        }
+        stage ('Report') {
+            steps {
+                echo "Report Details"
+            }
+        }
+	post{
+                success {
+                }
+                failure {
+                    script{
+                        
+						input('Build is failure. Can we proceed?')
+                        error 'failed to execute'
+                    }
+                }
+                aborted {
+                }
+                unstable {
+                    script{
+                           input('Build is unstable Can we proceed?')
+                          error 'unstable to execute'                 
+                     }
+                }
+            }
         
-       }
-   }
+    }
+}
