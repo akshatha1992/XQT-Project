@@ -1,51 +1,36 @@
 pipeline {
-
     agent any
-
     stages {
-	stage("Stage 1") {
-	    steps {
-		script {
-		    error "This pipeline stops here!"
-		}
-	    }
-	}
-        stage ('Get Java Home Path') {
+        stage ('Init') {
             steps {
-                echo "PATH = ${PATH}"
-                echo "Java_HOME = ${JAVA_HOME}"
+                echo "Init result: ${currentBuild.result}"
+                echo "Init currentResult: ${currentBuild.currentResult}"
+            }
+            post {
+                always {
+                    echo "Post-Init result: ${currentBuild.result}"
+                    echo "Post-Init currentResult: ${currentBuild.currentResult}"
+                }
             }
         }
-	 
-	stage ('Execute Selenium Script from Git Repo ') {
+        stage ('Build') {
             steps {
-                bat label: '', script: 'executeTest.bat'
+                echo "During Build result: ${currentBuild.result}"
+                echo "During Build currentResult: ${currentBuild.currentResult}"
+                sh 'exit 1'
+            }
+            post {
+                always {
+                    echo "Post-Build result: ${currentBuild.result}"
+                    echo "Post-Build currentResult: ${currentBuild.currentResult}"
+                }
             }
         }
-        stage ('test stage after failure') {
-            steps {
-               echo "PATH = ${PATH}"
-            }
+    }
+    post {
+        always {
+            echo "Pipeline result: ${currentBuild.result}"
+            echo "Pipeline currentResult: ${currentBuild.currentResult}"
         }
-	}
-	post{
-                success {
-		 echo "build success Message"
-                }
-                failure {
-                     input('Build is failed Can we proceed?')
-                }
-                aborted {
-		 echo "build aborted"
-		 input('Build is unstable Can we proceed?')
-                }
-                unstable {
-                    script{
-                           input('Build is unstable Can we proceed?')
-                                        
-                     }
-                }
-            }
-        
-    
+    }
 }
