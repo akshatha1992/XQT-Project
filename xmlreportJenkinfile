@@ -1,1 +1,22 @@
-fv
+pipeline {
+    agent any
+    stages {
+        stage ('Clone') {
+            steps {
+                git url: 'https://github.com/akshatha1992/XQT-Project.git'
+            }
+        }
+        stage ('execution') {
+            steps {
+                echo 'CICD Process'
+		bat label: '', script: 'Execute.bat'
+            }
+        }
+        stage ('Report') 
+	    {
+            steps {
+                junit '**/build/test-reports/*.xml. '
+                }
+           }
+       }
+   }
