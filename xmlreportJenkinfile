@@ -15,7 +15,7 @@ pipeline {
         stage ('Report') 
 	    {
             steps {
-		emailext body: 'testing body', recipientProviders: [developers()], subject: 'testing', to: 'akshatha.nayak@msg0global.com'
+		emailext body: 'testing body', recipientProviders: [developers()], subject: 'testing', to: 'akshatha.nayak@msg-global.com'
                 }
            }
        }
