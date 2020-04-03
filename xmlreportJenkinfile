@@ -15,7 +15,6 @@ pipeline {
         stage ('Report') 
 	    {
             steps {
-               ''' junit '**/build/test-reports/*.xml. ' '''
 		emailext body: 'testing body', recipientProviders: [developers()], subject: 'testing', to: 'akshatha.nayak@msg0global.com'
                 }
            }
