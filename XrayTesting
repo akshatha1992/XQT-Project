@@ -24,6 +24,6 @@ pipeline {
        //always {
          //   publishTestResults autoCreateTestCases: false, filePath: 'tm4j_result.json', format: 'Test Management for Jira Output Result For JUnit', projectKey: 'COV', serverAddress: 'Please configure at least one Jira instance in the global configuration'
        //}
-   }
+ //  }
       
    }
