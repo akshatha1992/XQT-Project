@@ -15,7 +15,7 @@ pipeline {
         stage ('Jira Result Import From Xray') 
 	    {
             steps {
-                step([$class: 'XrayImportBuilder', endpointName: '/junit', importFilePath: 'Junit/Report.xml', importToSameExecution: 'true', projectKey: 'COV', serverInstance: 'SERVER-7f86a19a-07b8-4fdb-96c8-abb3bbead4c0'])
+                step([$class: 'XrayImportBuilder', endpointName: '/junit', importFilePath: 'report.xml', importToSameExecution: 'true', projectKey: 'COV', serverInstance: 'CLOUD-7f86a19a-07b8-4fdb-96c8-abb3bbead4c0'])
 		}
            }
        }
