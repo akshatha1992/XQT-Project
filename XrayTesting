@@ -25,7 +25,8 @@ pipeline {
        always {
          //   publishTestResults autoCreateTestCases: false, filePath: 'tm4j_result.json', format: 'Test Management for Jira Output Result For JUnit', projectKey: 'COV', serverAddress: 'Please configure at least one Jira instance in the global configuration'
       // jiraSendDeploymentInfo environmentId: 'AK_ENVID', environmentName: 'AK_ENVName', environmentType: 'development', serviceIds: ['123'], site: 'team-1586233473385.atlassian.net', state: 'in_progress'
-       jiraSendBuildInfo branch: '', site: 'team-1586233473385.atlassian.net'
+      // jiraSendBuildInfo branch: '', site: 'team-1586233473385.atlassian.net'
+      jiraAddComment comment: 'testingto add Commentfrom jenkin to jira cos02', idOrKey: 'COS-2', site: ''
        }
   }
       
