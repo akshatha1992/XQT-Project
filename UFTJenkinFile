@@ -20,8 +20,8 @@ pipeline {
         always {
             echo "Pipeline result: ${currentBuild.result}"
             //step([$class: 'XrayImportBuilder', endpointName: '/junit', importFilePath: 'C:/Jenkins/xray/testresult.xml', importToSameExecution: 'true', projectKey: 'COV', serverInstance: 'CLOUD-7f86a19a-07b8-4fdb-96c8-abb3bbead4c0'])
-     // step([$class: 'XrayImportBuilder', endpointName: '/junit', importFilePath: 'testresult.xml', importToSameExecution: 'false', projectKey: 'COV', serverInstance: 'CLOUD-7f86a19a-07b8-4fdb-96c8-abb3bbead4c0'])
-       jiraSendDeploymentInfo environmentId: 'EnvID_1', environmentName: 'EnVNAme_Test', environmentType: 'development', serviceIds: [''], site: 'team-1586233473385.atlassian.net', state: 'in_progress'
+     step([$class: 'XrayImportBuilder', endpointName: '/junit', importFilePath: 'testresult.xml', importToSameExecution: 'true', projectKey: 'COV', serverInstance: 'CLOUD-7f86a19a-07b8-4fdb-96c8-abb3bbead4c0'])
+     //  jiraSendDeploymentInfo environmentId: 'EnvID_1', environmentName: 'EnVNAme_Test', environmentType: 'development', serviceIds: [''], site: 'team-1586233473385.atlassian.net', state: 'in_progress'
        } 
     }
    }
