@@ -11,9 +11,16 @@ pipeline {
        stage ('Report')
        {
         steps {
-           archiveArtifacts '/output/*.html'
+           publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'UFTHEMLREPORT.html', reportName: 'HTML Report', reportTitles: ''])
             }
           }
 	  
        }
+       post {
+        always {
+            echo "Pipeline result: ${currentBuild.result}"
+            step([$class: 'XrayImportBuilder', endpointName: '/junit', importFilePath: 'C:/Jenkins/xray/testresult.xml', importToSameExecution: 'true', projectKey: 'COV', serverInstance: 'CLOUD-7f86a19a-07b8-4fdb-96c8-abb3bbead4c0'])
+      
+        } 
+    }
    }
