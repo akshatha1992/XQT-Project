@@ -1,15 +1,19 @@
 pipeline {
     agent any
     stages {
-	    stage ('Execution UFT Local Machine'){
-	       steps {
-	             bat label: '', script: '''cd "C:\\UFTTestBatFile.bat"
-	            }
-          }
-       stage ('Report') {
+	  stage ('Execution UFT Local Machine')
+	  {
+	  steps {
+	        	bat label: '', script: '''cd C:\\Jenkins\\xray
+			UFTTestBatFile.bat'''
+	          }
+           }
+       stage ('Report')
+       {
         steps {
             echo "Report Details"
             }
           }
+	  
        }
    }
